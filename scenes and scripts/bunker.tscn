@@ -1,0 +1,127 @@
+[gd_scene load_steps=13 format=3 uid="uid://d2ic38ytq5oq2"]
+
+[ext_resource type="Texture2D" uid="uid://dufq5twm3hl4d" path="res://textures/bunker_piece1.png" id="1_lnke8"]
+[ext_resource type="Script" uid="uid://b2ycy2ccp8yke" path="res://scenes and scripts/bunker.gd" id="1_qcbkj"]
+[ext_resource type="Texture2D" uid="uid://bb0i3nbmw0l1h" path="res://textures/bunker_piece2.png" id="2_isnvk"]
+[ext_resource type="Texture2D" uid="uid://k27wsf0v3prb" path="res://textures/bunker_piece3.png" id="3_iqn4h"]
+[ext_resource type="Texture2D" uid="uid://b2di2ldl3rlgu" path="res://textures/bunker_piece4.png" id="4_7ymly"]
+[ext_resource type="Texture2D" uid="uid://l28su76aaorn" path="res://textures/bunker_piece5.png" id="5_6jljo"]
+[ext_resource type="Texture2D" uid="uid://0mwd620qxcef" path="res://textures/bunker_piece6.png" id="6_3rlus"]
+[ext_resource type="Texture2D" uid="uid://dekw1whjohvb7" path="res://textures/bunker_piece7.png" id="7_6hw3r"]
+[ext_resource type="Texture2D" uid="uid://b4os8t4rpnfnn" path="res://textures/bunker_piece8.png" id="8_xr7dq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ms3q"]
+size = Vector2(8, 29)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pmk06"]
+size = Vector2(8, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jboso"]
+size = Vector2(8, 29)
+
+[node name="Bunker" type="Node2D"]
+script = ExtResource("1_qcbkj")
+
+[node name="piece1" type="Area2D" parent="."]
+collision_mask = 48
+
+[node name="Sprite2D" type="Sprite2D" parent="piece1"]
+position = Vector2(0, 0.5)
+texture = ExtResource("1_lnke8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="piece1"]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_2ms3q")
+
+[node name="piece2" type="Area2D" parent="."]
+position = Vector2(8, 0)
+collision_mask = 48
+
+[node name="Sprite2D" type="Sprite2D" parent="piece2"]
+position = Vector2(0, 0.5)
+texture = ExtResource("2_isnvk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="piece2"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_pmk06")
+
+[node name="piece3" type="Area2D" parent="."]
+position = Vector2(16, 0)
+collision_mask = 48
+
+[node name="Sprite2D" type="Sprite2D" parent="piece3"]
+position = Vector2(0, 0.5)
+texture = ExtResource("3_iqn4h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="piece3"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_pmk06")
+
+[node name="piece4" type="Area2D" parent="."]
+position = Vector2(24, 0)
+collision_mask = 48
+
+[node name="Sprite2D" type="Sprite2D" parent="piece4"]
+position = Vector2(0, 0.5)
+texture = ExtResource("4_7ymly")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="piece4"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_pmk06")
+
+[node name="piece5" type="Area2D" parent="."]
+position = Vector2(32, 0)
+collision_mask = 48
+
+[node name="Sprite2D" type="Sprite2D" parent="piece5"]
+position = Vector2(0, 0.5)
+texture = ExtResource("5_6jljo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="piece5"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_pmk06")
+
+[node name="piece6" type="Area2D" parent="."]
+position = Vector2(40, 0)
+collision_mask = 48
+
+[node name="Sprite2D" type="Sprite2D" parent="piece6"]
+position = Vector2(0, 0.5)
+texture = ExtResource("6_3rlus")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="piece6"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_pmk06")
+
+[node name="piece7" type="Area2D" parent="."]
+position = Vector2(48, 0)
+collision_mask = 48
+
+[node name="Sprite2D" type="Sprite2D" parent="piece7"]
+position = Vector2(0, 0.5)
+texture = ExtResource("7_6hw3r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="piece7"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_pmk06")
+
+[node name="piece8" type="Area2D" parent="."]
+position = Vector2(56, 0)
+collision_mask = 48
+
+[node name="Sprite2D" type="Sprite2D" parent="piece8"]
+position = Vector2(0, 0.5)
+texture = ExtResource("8_xr7dq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="piece8"]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_jboso")
+
+[connection signal="body_entered" from="piece1" to="." method="_on_piece_1_body_entered"]
+[connection signal="body_entered" from="piece2" to="." method="_on_piece_2_body_entered"]
+[connection signal="body_entered" from="piece3" to="." method="_on_piece_3_body_entered"]
+[connection signal="body_entered" from="piece4" to="." method="_on_piece_4_body_entered"]
+[connection signal="body_entered" from="piece5" to="." method="_on_piece_5_body_entered"]
+[connection signal="body_entered" from="piece6" to="." method="_on_piece_6_body_entered"]
+[connection signal="body_entered" from="piece7" to="." method="_on_piece_7_body_entered"]
+[connection signal="body_entered" from="piece8" to="." method="_on_piece_8_body_entered"]

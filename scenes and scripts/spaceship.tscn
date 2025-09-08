@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7xgqk82c5plr"]
+
+[ext_resource type="Texture2D" uid="uid://d1g00f5io0sdj" path="res://textures/spaceship.png" id="1_luv1i"]
+[ext_resource type="Script" uid="uid://dav42laix8s7l" path="res://scenes and scripts/spaceship.gd" id="1_s1xkc"]
+[ext_resource type="AudioStream" uid="uid://bhkyd2nctc7f1" path="res://audio/lifeLost.wav" id="3_sb7ca"]
+[ext_resource type="AudioStream" uid="uid://5pm0kk2aljse" path="res://audio/laserShoot.wav" id="4_k8jrq"]
+
+[node name="spaceship" type="CharacterBody2D"]
+script = ExtResource("1_s1xkc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.78814e-07, 0)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_luv1i")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(1.5, -14)
+scale = Vector2(0.5, 1.5)
+polygon = PackedVector2Array(-3, -15.5, 14, 1, 14, 12, 62, 29, -68, 29, -20, 12, -20, 1)
+
+[node name="RocketPosition" type="Node2D" parent="."]
+position = Vector2(0, -57)
+
+[node name="LifeLostSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_sb7ca")
+volume_db = -2.0
+
+[node name="rocket" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_k8jrq")
+
+[connection signal="finished" from="LifeLostSound" to="." method="_on_life_lost_sound_finished"]

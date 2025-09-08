@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://c7a28vrvssicp"]
+
+[ext_resource type="Script" uid="uid://c7nd0aw1mtrvv" path="res://scenes and scripts/alien1.gd" id="1_lrxp7"]
+[ext_resource type="Texture2D" uid="uid://cnsjaycoesj5i" path="res://textures/alien1_walk1.png" id="2_cv7uq"]
+[ext_resource type="Texture2D" uid="uid://df3qrtd5yclpd" path="res://textures/alien1_walk2.png" id="3_dcmpy"]
+[ext_resource type="AudioStream" uid="uid://dy4uangnsj5rp" path="res://audio/enemy_laser.wav" id="4_18f82"]
+[ext_resource type="AudioStream" uid="uid://b22c5pe83364o" path="res://audio/enemy_death.wav" id="5_kitwo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h1gk0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_cv7uq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_dcmpy")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v1avf"]
+size = Vector2(56, 55)
+
+[node name="Alien1" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_lrxp7")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_h1gk0")
+animation = &"walk"
+autoplay = "walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_v1avf")
+
+[node name="RocketPosition" type="Node2D" parent="."]
+position = Vector2(0, 13)
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="rocket_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_18f82")
+volume_db = -18.0
+pitch_scale = 1.2
+
+[node name="death_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_kitwo")
+volume_db = -15.0
+pitch_scale = 1.6
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="finished" from="death_sound" to="." method="_on_death_sound_finished"]
