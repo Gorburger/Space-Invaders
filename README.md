@@ -3,4 +3,4 @@
 
 A recreation of Space invaders with godot
 
-![splash-screen](textures/icon.png)
+![splash-screen](textures/icon.PNG)
